@@ -26,10 +26,13 @@ gulp.task('jshint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
 })
+
+gulp.task('watch', function () {
+  return gulp.watch(['./js/*.js'], ['build'])
+})
   
 gulp.task('default', ['uglify', 'watch', 'jshint', 'serve', 'build', ], function() {
 
-  console.log('hey')
 })
 
 // Browserify

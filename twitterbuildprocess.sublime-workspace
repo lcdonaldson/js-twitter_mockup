@@ -1,0 +1,308 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"m",
+				"margin-right"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"fo",
+				"font-weight"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 1678,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Levi/Sites/M4/jQuery Twitter v2"
+	],
+	"file_history":
+	[
+		"/Users/Levi/Dropbox/sublime projects/m1.sublime-project",
+		"/Users/Levi/Sites/M1/my-sublime-settings",
+		"/Users/Levi/Sites/M1/index.html",
+		"/Users/Levi/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Levi/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/Levi/Desktop/Java/eclipse/p2/org.eclipse.equinox.p2.core/cache/artifacts.xml",
+		"/Users/Levi/Websites/hand4health/index.html",
+		"/Users/Levi/Websites/Biography/style.css",
+		"/Users/Levi/Websites/Biography/mybio.html",
+		"/Users/Levi/Desktop/coding practice/Python/conditional commands.py",
+		"/Users/Levi/Desktop/coding practice/Python/untitled.py",
+		"/Users/Levi/Websites/milestone 2/index.html",
+		"/Users/Levi/Websites/Recieved work files/levi/index.html",
+		"/Users/Levi/Websites/Recieved work files/levi/style.css",
+		"/Users/Levi/Websites/Pima Science/CSS/main.css",
+		"/Users/Levi/Desktop/Java/eclipse/plugins/org.eclipse.ui.themes_1.0.1.v20141126-1957/css/dark/e4-dark_globalstyle.css",
+		"/Users/Levi/Downloads/eclipse/plugins/org.eclipse.ui.themes_1.0.1.v20141126-1957/css/e4_basestyle.css",
+		"/Users/Levi/Downloads/eclipse/plugins/org.eclipse.platform_4.4.2.v20150204-1700/book.css",
+		"/Users/Levi/Websites/fudge site/index.html",
+		"/Users/Levi/Websites/fudge site/fudge.css",
+		"/Users/Levi/.atom/todolist.js",
+		"/Users/Levi/Websites/hand4health/read more.js",
+		"/Users/Levi/Desktop/coding practice/Python/simpleprogramtest.py",
+		"/Users/Levi/Desktop/coding practice/Python/pytest1.py",
+		"/Users/Levi/Desktop/coding practice/javascript/levi.html",
+		"/Users/Levi/Websites/milestone 2/styles.css",
+		"/Users/Levi/Websites/milestone 2/myButton.js",
+		"/Users/Levi/Websites/milestone 2/button.js",
+		"/Users/Levi/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/Levi/Library/Application Support/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/Users/Levi/Websites/Recieved work files/levi/scripts.js",
+		"/Users/Levi/Websites/Recieved work files/levi/jquery-1.11.2.min.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "gulpfile.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1678,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "twitterbuildprocess.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Dropbox/twitter-buildprocess.sublime-workspace"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 171.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
