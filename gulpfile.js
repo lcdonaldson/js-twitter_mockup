@@ -28,10 +28,10 @@ gulp.task('jshint', function() {
 })
 
 gulp.task('watch', function () {
-  return gulp.watch(['./js/*.js'], ['build'])
+  return gulp.watch(['js/index.js'], ['build'])
 })
   
-gulp.task('default', ['uglify', 'watch', 'jshint', 'serve', 'build', ], function() {
+gulp.task('default', ['uglify', 'jshint', 'serve', 'build', ], function () {
 
 })
 
