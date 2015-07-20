@@ -39,21 +39,21 @@ $(function () {
     
     var replies = getAllReplies()
     var robots = getUsers()
-	var tweeting = getTweets()
+    var tweeting = getTweets()
 
-	robots.done(function (robots) {
-		robots.forEach(function (robot) {
-			tweetsByUser(robot.id)
+    robots.done(function (robots) {
+        robots.forEach(function (robot) {
+            tweetsByUser(robot.id)
                 .done(function (tweets) {
                     tweets.forEach(function (tweet) {
                         $('#tweets').append(renderThread (robot, tweet.message, tweet.id))
                     })
                 })
-		})
-	})
-				
-	$('#main').on('click', 'textarea', function () {
-        $(this).parent().addClass('expand')
+        })
+    })
+
+    $('#main').on('click', 'textarea', function () {
+     $(this).parent().addClass('expand')
     })
 
     $('#main').on('submit', '.compose', function (event) {
