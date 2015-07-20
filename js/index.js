@@ -15,7 +15,7 @@ $(function () {
 	var repliesUrl = 'http://localhost:3000/replies/'
 
 	function getUsers() {
-		return $.get(usersUrl)		
+	   return $.get(usersUrl)		
 	}
 
     function getReplies(id) {
@@ -40,7 +40,6 @@ $(function () {
     var replies = getAllReplies()
     var robots = getUsers()
 	var tweeting = getTweets()
-
 
 	robots.done(function (robots) {
 		robots.forEach(function (robot) {
@@ -86,9 +85,9 @@ $(function () {
                         robots.done(function (robots) {
                             robots.forEach(function (robot) {
                                 if (reply.userId === robot.id) {
-                                var html = renderTweet(robot, reply.message, reply.tweetId)
-                                var search = $('#tweet-' + reply.tweetId)
-                                search.siblings('.replies').append(html)
+                                    var html = renderTweet(robot, reply.message, reply.tweetId)
+                                    var search = $('#tweet-' + reply.tweetId)
+                                    search.siblings('.replies').append(html)
 
                                 }
                             })
@@ -129,38 +128,21 @@ $(function () {
     }
 
     function renderThread(user, message, id) {
-    var html = tmpl.thread({
-        tweet: renderTweet(user, message, id),
-        compose: renderCompose()
-    })
-    return html
-  }
+        var html = tmpl.thread({
+            tweet: renderTweet(user, message, id),
+            compose: renderCompose()
+        })
+        return html
+    }
 
-  function renderTweet(user, message, tweetId) {
-    var html = tmpl.tweet({
-        img: user.img,
-        userId: user.id,
-        handle: user.handle,
-        message: message,
-        id: tweetId
-    })
-    return html
-  } 
+    function renderTweet(user, message, tweetId) {
+        var html = tmpl.tweet({
+            img: user.img,
+            userId: user.id,
+            handle: user.handle,
+            message: message,
+            id: tweetId
+        })
+        return html
+    } 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
