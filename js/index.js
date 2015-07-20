@@ -79,8 +79,7 @@ $(function () {
     $('#tweets').on('click', '.tweet', function () {
         $(this).closest('.thread').toggleClass('expand')
         var appendReplies = $(this).parents('#tweets').find('.replies > .tweet')
-        if (!!appendReplies.length) {
-          } else {
+        if (!appendReplies.length) {
             getAllReplies()
                 .done(function (replies) {
                     replies.forEach(function (reply) {
@@ -105,11 +104,8 @@ $(function () {
             message: message
         }).done(function (post) {
             console.log('good')
-            var html = tmpl.thread({
-                tweet: renderTweet(user, message),
-                compose: tmpl.compose()
-            })
-            $('#tweets').append(renderThread(currentUser, message))
+ 
+            $('#tweets').append(renderThread(currentUser, message, post.id))
         }).fail(function () {
             console.log('bad')
         })
@@ -123,8 +119,7 @@ $(function () {
         }).done(function (post) {
             console.log('excellent')
             var html = tmpl.thread({
-                tweet:renderTweet(user, message),
-                compose: tmpl.compose()
+                tweet:renderTweet(user, message)
             })
             var search = $('#tweet-' + tweetId)
             search.siblings('.replies').append(html)
