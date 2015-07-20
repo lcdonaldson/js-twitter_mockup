@@ -3,106 +3,155 @@
 var $ = require('jquery')
 var tmpl = require('./template.js')
 
-
 var currentUser = {
-  handle: '@bradwestfall',
-  img: 'brad.png',
-  id: 1
+  handle: '@blend_software',
+  img: '/images/sweet.png',
+  id: 4
 }
 
 $(function () {
-
 	var usersUrl = 'http://localhost:3000/users/'
 	var tweetsUrl = 'http://localhost:3000/tweets/'
 	var repliesUrl = 'http://localhost:3000/replies/'
 
-	function getUsers () {
-		// console.log(tmpl)
-		return $.get(usersUrl)
-			// .done(function (getUsersFromUrl) {
-			// 	console.log(getUsersFromUrl)
-			// })
+	function getUsers() {
+		return $.get(usersUrl)		
 	}
-	
-	// $get(usersUrl + id)
-	// 	.done(function (userid) {
-	// 		$.get(userid + )
-	// 	})
 
-	getUsers()
-		.done(function (arrayOfUsers) {
-			arrayOfUsers.forEach(function (user) {
-				// console.log(tmpl.tweet({
-				// 	handle: user.handle,
-				// 	img: user.img,
-				// 	message: user.realName
-				// }))
-				getTweets(user.id)
-					.done(function (tweets) {
-						tweets.forEach(function (tweet) {		
-							// console.log(tmpl.tweet({
-							// 	id: tweet.id,
-							// 	userId: tweet.userId,
-							// 	message: tweet.message
-							// }))
-						})
-						// console.log('tweets per user', tweets)
-					})
-				getReplies(tweets.id)
-					.done(function (replies) {
-						replies.forEach(function (reply) {
-							console.log(tmpl.tweet({
-								repliesId: reply.id
-							}))
-						})
-					})	
-			})
+    function getReplies(id) {
+        return $.get(tweetsUrl + id + '/replies')
+    }
+
+    function getAllReplies() {
+        return $.get(repliesUrl)
+    }
+    function getTweets() {
+        return $.get(tweetsUrl)
+    }
+
+    function tweetsByUser(id) {
+        return $.get(usersUrl + id +'/tweets')
+    }
+
+    function renderCompose() {
+        return tmpl.compose()
+    }
+    
+    var replies = getAllReplies()
+    var robots = getUsers()
+	var tweeting = getTweets()
+
+
+	robots.done(function (robots) {
+		robots.forEach(function (robot) {
+			tweetsByUser(robot.id)
+                .done(function (tweets) {
+                    tweets.forEach(function (tweet) {
+                        $('#tweets').append(renderThread (robot, tweet.message, tweet.id))
+                    })
+                })
 		})
+	})
+				
+	$('#main').on('click', 'textarea', function () {
+        $(this).parent().addClass('expand')
+    })
+
+    $('#main').on('submit', '.compose', function (event) {
+        event.preventDefault()
+
+        var message = $(this).find('textarea').val()
+        var replyTweet = $(this).closest('.replies')
 
 
-	function getReplies(id) {
-		return $.get(tweetsUrl + id + '/replies')
-		// .done(function (getRepliesFromTweetsUrl) {
-		// console.log(tweetsUrl + id + '/replies')
-			
-		})
-	}	
-		
-	function getTweets(id) {
-		// console.log (1)
-		return $.get(usersUrl + id + '/tweets')
-			// .done(function (getTweetsFromUrl) {
-			// 	console.log(getTweetsFromUrl)
-			// })
-	}
-	
-	
-})
+        if(!!replyTweet.length) {
+          var getTweetId = replyTweet.siblings('.tweet').attr('id')
+          var tweetId = getTweetId.slice(6)
+          postReply(currentUser, tweetId, message)
+        } else {
+          postTweet(currentUser, message)  
+        }
+        $(this).removeClass('expand')
+        $(this).find('textarea').val('')
+        $(this).find('count').text(140)
+    }) 
+        
+    $('#tweets').on('click', '.tweet', function () {
+        $(this).closest('.thread').toggleClass('expand')
+        var appendReplies = $(this).parents('#tweets').find('.replies > .tweet')
+        if (!!appendReplies.length) {
+          } else {
+            getAllReplies()
+                .done(function (replies) {
+                    replies.forEach(function (reply) {
+                        robots.done(function (robots) {
+                            robots.forEach(function (robot) {
+                                if (reply.userId === robot.id) {
+                                var html = renderTweet(robot, reply.message, reply.tweetId)
+                                var search = $('#tweet-' + reply.tweetId)
+                                search.siblings('.replies').append(html)
 
+                                }
+                            })
+                        })
+                    })
+              })
+          }
+    }) 
 
+    function postTweet(user, message) {
+        $.post(tweetsUrl, {
+            userId: user.id,
+            message: message
+        }).done(function (post) {
+            console.log('good')
+            var html = tmpl.thread({
+                tweet: renderTweet(user, message),
+                compose: tmpl.compose()
+            })
+            $('#tweets').append(renderThread(currentUser, message))
+        }).fail(function () {
+            console.log('bad')
+        })
+    }
 
+    function postReply(user, tweetId, message) {
+        $.post(repliesUrl, {
+            userId: user.id,
+            tweetId: tweetId,
+            message: message
+        }).done(function (post) {
+            console.log('excellent')
+            var html = tmpl.thread({
+                tweet:renderTweet(user, message),
+                compose: tmpl.compose()
+            })
+            var search = $('#tweet-' + tweetId)
+            search.siblings('.replies').append(html)
+        }).fail(function () {
+            console.log('so not good')
+        })
+    }
 
+    function renderThread(user, message, id) {
+    var html = tmpl.thread({
+        tweet: renderTweet(user, message, id),
+        compose: renderCompose()
+    })
+    return html
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  function renderTweet(user, message, tweetId) {
+    var html = tmpl.tweet({
+        img: user.img,
+        userId: user.id,
+        handle: user.handle,
+        message: message,
+        id: tweetId
+    })
+    return html
+  } 
+});
 
 
 
@@ -115,71 +164,169 @@ $(function () {
 
 // var $ = require('jquery')
 // var tmpl = require('./template.js')
-// var userUrl = 'http://localhost:3000/users/'
-// var tweetsUrl = 'http://localhost:3000/tweets/'
-// var repliesUrl = 'http://localhost:3000/replies/'
 
 // var currentUser = {
-//   handle: '@bradwestfall',
-//   img: 'brad.png',
-//   id: 1
+//   handle: '@blend_software',
+//   img: '/images/sweet.png',
+//   id: 4
 // }
-
-// function getUsers() {
-// 	return $.get(userUrl)
-// }
-
-// function getUserTweets(users) {
-// 	users.forEach(function (user) {
-// 		console.log('user data', users)
-// 		$('#tweets').append()
-// 		$.get(userUrl + user.id + '/tweets')
-// 			.done(function (tweets) {
-// 				console.log('tweets for user' + user.id, tweets)
-// 			})
-// 			.fail(function (xhr) {
-// 				console.log(xhr.status, 'fail for user' + user.id)
-// 			})
-// 	})
-// }
-
-// getUsers()
-// 	.done(getUserTweets)
-// 	.fail(function (xhr) {
-// 		console.log('user request failed', xhr.status)		
-// 	})
-
-
-
 
 // $(function () {
+//   var usersUrl = 'http://localhost:3000/users/'
+//   var tweetsUrl = 'http://localhost:3000/tweets/'
+//   var repliesUrl = 'http://localhost:3000/replies/'
 
-// 	   //expands the text area for composing a new tweet
-// 	$('#main').on('click', 'textarea', function () {
-// 		$(this).parent().addClass('expand')
-// 		// console.log('hi')
-// 		// event.preventDefault()
-// 	})	
-// 	// toggles the thread but not the tweet
-// 	$('body').on('click', '.thread > .tweet', function () {
-// 		$(this).parent().toggleClass('expand')
-// 		// console.log('hey')
-// 		// event.preventDefault()	
-// 	})
+//   function getUsers() {
+//     return $.get(usersUrl)
+//   }
 
-// 		$('textarea').val('')
-// 		$(this).removeClass('expand')
-// 		event.preventDefault()
+//   function getReplies(id) {
+//     return $.get(tweetsUrl + id + '/replies')
+//   }
+
+//   function getAllReplies() {
+//     return $.get(repliesUrl)
+//   }
+
+//   function getTweets() {
+//     return $.get(tweetsUrl) 
+//   }
+
+//   function tweetsByUser(id) {
+//     return $.get(usersUrl + id +'/tweets')
+//   }
+
+//   function renderCompose() {
+//     return tmpl.compose() 
+//   }
+
+//   var replies = getAllReplies()
+//   var robots = getUsers()
+//   var tweeting = getTweets()
+
+//   robots.done(function (robots) {
+//     robots.forEach(function (robot) {
+//       tweetsByUser(robot.id)
+//         .done(function (tweets) {
+//           tweets.forEach(function (tweet) {
+//             $('#tweets').append(renderThread(robot, tweet.message, tweet.id))
+//         })
+//       })
+//     })
+//   })
 
 
-// 	// $('#main').on('submit', 'form', function() {
-// 	// 	var message = $(this).find('textarea').val()
-// 	// 	// event.preventDefault()
-// 	// 	if($(this).parents('.replies').length) {
-// 	// 	   $(this).parents('.replies').append(renderTweet(User, message))
-// 	// 	} else {
-// 	// 		$('.tweets').append(renderThread(User, message))
-// 	// 	}
+//   $('#main').on('click', 'textarea', function () {
+//     $(this).parent().addClass('expand')
+//   })
 
-// 	// })
-// })
+//   $('#main').on('submit', '.compose', function (event) {
+//     event.preventDefault()
+
+//     var message = $(this).find('textarea').val()
+//     var replyTweet = $(this).closest('.replies')
+
+
+//     if(!!replyTweet.length) {
+//       var getTweetId = replyTweet.siblings('.tweet').attr('id')
+//       var tweetId = getTweetId.slice(6)
+//       postReply(currentUser, tweetId, message)
+//     } else {
+//       postTweet(currentUser, message)
+//     }
+
+//     $(this).removeClass('expand')
+//     $(this).find('textarea').val('')
+//     $(this).find('count').text(140)
+//   }) 
+
+//   $('#tweets').on('click', '.tweet', function () {
+//     $(this).closest('.thread').toggleClass('expand')
+//     var appendReplies = $(this).parents('#tweets').find('.replies > .tweet')
+//     if (!!appendReplies.length) {
+//       } else {
+//         getAllReplies()
+//           .done(function (replies) {
+//             replies.forEach(function (reply) {
+//               robots.done(function (robots) {
+//                 robots.forEach(function (robot) {
+//                 if (reply.userId === robot.id) {
+//                   var html = renderTweet(robot, reply.message, reply.tweetId)
+//                   var search = $('#tweet-' + reply.tweetId)
+//                   search.siblings('.replies').append(html)
+//                 }
+//               })
+//             })
+//           })
+//         })
+//       }
+//   })
+
+//   function postTweet(user, message){
+//     $.post(tweetsUrl,{
+//       userId: user.id,
+//       message: message
+//     }).done(function (post) {
+//       console.log('Obviously you do not suck at life!')
+//       var html = tmpl.thread({
+//         tweet: renderTweet(user, message),
+//         compose: tmpl.compose()
+//       })
+//       $('#tweets').append(renderThread(currentUser, message))
+//     }).fail(function () {
+//       console.log('Obviously you suck at life')
+//     })
+//   } 
+
+//   function postReply(user, tweetId, message){
+//     $.post(repliesUrl, {
+//       userId: user.id,
+//       tweetId: tweetId,
+//       message: message
+//     }).done(function (post) {
+//       console.log('fantastico!!!!')
+//       var html = tmpl.thread({
+//         tweet: renderTweet(user, message),
+//         compose: tmpl.compose()
+//       })
+//       var search = $('#tweet-' + tweetId)
+//       search.siblings('.replies').append(html)
+//     }).fail(function () {
+//       console.log('if you\'re seeing this, I have probably jumped off of a building')
+//     })
+//   }
+
+//   function renderThread(user, message, id) {
+//     var html = tmpl.thread({
+//         tweet: renderTweet(user, message, id),
+//         compose: renderCompose()
+//     })
+//     return html
+//   }
+
+//   function renderTweet(user, message, tweetId) {
+//     var html = tmpl.tweet({
+//           img: user.img,
+//           userId: user.id,
+//           handle: user.handle,
+//           message: message,
+//           id: tweetId
+//         })
+//     return html
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

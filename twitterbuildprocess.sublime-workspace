@@ -36,10 +36,18 @@
 	"buffers":
 	[
 		{
-			"file": "gulpfile.js",
+			"file": "js/index.js",
 			"settings":
 			{
-				"buffer_size": 1678,
+				"buffer_size": 6332,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/template.js",
+			"settings":
+			{
+				"buffer_size": 320,
 				"line_ending": "Unix"
 			}
 		}
@@ -109,10 +117,18 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/Levi/Sites/M4/jQuery Twitter v2"
+		"/Users/Levi/Sites/M4/jQuery Twitter v2/js",
+		"/Users/Levi/Sites/M4/jQuery Twitter v2/templates"
 	],
 	"file_history":
 	[
+		"/Users/Levi/Sites/M4/jQuery Twitter v2/gulpfile.js",
+		"/Users/Levi/Sites/M3/twitterproject/index.js",
+		"/Users/Levi/Sites/M4/jQuery Twitter v2/js/index.js",
+		"/Users/Levi/Sites/M4/jQuery Twitter v2/templates/tweetTemplate.handlebars",
+		"/Users/Levi/Sites/M4/jQuery Twitter v2/db.json",
+		"/Users/Levi/Sites/M4/dashboard/addUser.html",
+		"/Users/Levi/Sites/M4/jQuery Twitter v2/index.html",
 		"/Users/Levi/Dropbox/sublime projects/m1.sublime-project",
 		"/Users/Levi/Sites/M1/my-sublime-settings",
 		"/Users/Levi/Sites/M1/index.html",
@@ -184,11 +200,40 @@
 			[
 				{
 					"buffer": 0,
-					"file": "gulpfile.js",
+					"file": "js/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6332,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1948,
+								1948
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1082.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/template.js",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1678,
+						"buffer_size": 320,
 						"regions":
 						{
 						},
@@ -201,15 +246,13 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
