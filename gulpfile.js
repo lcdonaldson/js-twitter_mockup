@@ -28,7 +28,7 @@ gulp.task('jshint', function() {
 })
 
 gulp.task('watch', function () {
-  return gulp.watch(['js/index.js'], ['build'])
+  return gulp.watch(['js/index.js','js/template.js'], ['build'])
 })
   
 gulp.task('default', ['uglify', 'jshint', 'serve', 'build', ], function () {
