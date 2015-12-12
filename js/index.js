@@ -30,7 +30,7 @@ $(function () {
     }
 
     function tweetsByUser(id) {
-        return $.get(usersUrl + id +'/tweets')
+        return $.get(usersUrl + id + '/tweets')
     }
 
     function renderCompose() {
