@@ -115,7 +115,7 @@ body {
 	background: rgb(192, 222, 237) url('../images/bg.png') repeat-x;
 }
 
-section#main {
+section #main {
 	width: 600px;
 	margin: 0 auto;
 }
