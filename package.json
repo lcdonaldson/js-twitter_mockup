@@ -23,7 +23,9 @@
   "private": true,
   "dependencies": {
     "handlebars": "^4.0.0",
-    "jquery": "^2.1.4",
-    "lodash": "^3.9.3"
+    //"jquery": "^2.1.4",
+    "jquery": "^3.0.0,
+    //"lodash": "^3.9.3",
+    "lodash": "^4.17.11
   }
 }
