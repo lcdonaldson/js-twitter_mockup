@@ -10,13 +10,13 @@ var currentUser = {
 }
 
 $(function () {
-	var usersUrl = 'http://localhost:3000/users/'
-	var tweetsUrl = 'http://localhost:3000/tweets/'
-	var repliesUrl = 'http://localhost:3000/replies/'
+    var usersUrl = 'http://localhost:3000/users/'
+    var tweetsUrl = 'http://localhost:3000/tweets/'
+    var repliesUrl = 'http://localhost:3000/replies/'
 
-	function getUsers() {
-	   return $.get(usersUrl)		
-	}
+    function getUsers() {
+       return $.get(usersUrl)		
+    }
 
     function getReplies(id) {
         return $.get(tweetsUrl + id + '/replies')
@@ -25,6 +25,7 @@ $(function () {
     function getAllReplies() {
         return $.get(repliesUrl)
     }
+
     function getTweets() {
         return $.get(tweetsUrl)
     }
@@ -53,7 +54,7 @@ $(function () {
     })
 
     $('#main').on('click', 'textarea', function () {
-     $(this).parent().addClass('expand')
+    	$(this).parent().addClass('expand')
     })
 
     $('#main').on('submit', '.compose', function (event) {
@@ -64,12 +65,13 @@ $(function () {
 
 
         if(!!replyTweet.length) {
-          var getTweetId = replyTweet.siblings('.tweet').attr('id')
-          var tweetId = getTweetId.slice(6)
-          postReply(currentUser, tweetId, message)
+            var getTweetId = replyTweet.siblings('.tweet').attr('id')
+            var tweetId = getTweetId.slice(6)
+            postReply(currentUser, tweetId, message)
         } else {
-          postTweet(currentUser, message)  
+            postTweet(currentUser, message)  
         }
+
         $(this).removeClass('expand')
         $(this).find('textarea').val('')
         $(this).find('count').text(140)
@@ -88,7 +90,6 @@ $(function () {
                                     var html = renderTweet(robot, reply.message, reply.tweetId)
                                     var search = $('#tweet-' + reply.tweetId)
                                     search.siblings('.replies').append(html)
-
                                 }
                             })
                         })
