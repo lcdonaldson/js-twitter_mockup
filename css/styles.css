@@ -3,7 +3,7 @@
 *****************************************/
 
 html {
-	color: #777;
+	color: #777777;
 	font-family: 'Open Sans', Arial;
 }
 
@@ -33,9 +33,9 @@ a {
 
 button {
 	background-color: #2E9AC2;
-	border-radius: 5px;
+	border-radius: 0.3rem;
 	border: none;
-	color: #FFF;
+	color: #FFFFFF;
 	padding: 0.3rem 1rem;
 }
 
@@ -45,18 +45,18 @@ button {
 *****************************************/
 
 .compose > div {
-	margin-top: 10px;
+	margin-top: 0.6rem;
 	text-align: right;
 	display: none;
 }
 
 .compose textarea {
-	border-radius: 3px;
-	background-color: #FFF;
+	border-radius: 0.3rem;
+	background-color: #FFFFFF;
 	border: 1px solid #C0E1ED;
 	display: block;
 	width: 100%;
-	padding: 4px;
+	padding: 0.4rem;
 	resize: none;
 	height: 1.8em;
 }
@@ -90,8 +90,8 @@ button {
 	float: left;
 	width: 60px;
 	height: 60px;
-	background-color: #EEE;
-	border-radius: 4px;
+	background-color: #EEEEEE;
+	border-radius: 0.4rem;
 }
 
 .tweet .body {
@@ -101,7 +101,7 @@ button {
 
 .tweet .title {
 	font-weight: 700;
-	color: #333;
+	color: #333333;
 }
 
 .tweet .message {
@@ -132,7 +132,7 @@ header {
 
 #tweets {
 	margin-top: 10px;
-	background-color: #FFF;
+	background-color: #FFFFFF;
 	border: 1px solid #C0E1ED;
 	border-radius: 10px;
 	overflow: hidden;
