@@ -88,15 +88,15 @@ button {
 .tweet > img {
 	display: block;
 	float: left;
-	width: 60px;
-	height: 60px;
+	width: 3.75rem;
+	height: 3.75rem;
 	background-color: #EEEEEE;
 	border-radius: 0.4rem;
 }
 
 .tweet .body {
-	margin-left: 60px;
-	padding-left: 10px;
+	margin-left: 3.75rem;
+	padding-left: 0.6rem;
 }
 
 .tweet .title {
@@ -105,7 +105,7 @@ button {
 }
 
 .tweet .message {
-	margin-top: 10px;
+	margin-top: 0.6rem;
 }
 
 
@@ -118,7 +118,7 @@ body {
 }
 
 section #main {
-	width: 600px;
+	width: 37.5rem;
 	margin: 0 auto;
 }
 
@@ -126,15 +126,15 @@ header {
 	margin-top: 1.2rem;
 	background-color: #E5F2F7;
 	border: 1px solid #C0E1ED;
-	border-radius: 10px;
-	padding: 10px;
+	border-radius: 0.6rem;
+	padding: 0.6rem;
 }
 
 #tweets {
-	margin-top: 10px;
+	margin-top: 0.6rem;
 	background-color: #FFFFFF;
 	border: 1px solid #C0E1ED;
-	border-radius: 10px;
+	border-radius: 0.6rem;
 	overflow: hidden;
 }
 
@@ -147,18 +147,18 @@ header {
 }
 
 .thread .tweet {
-	margin: 10px;
+	margin: 0.6rem;
 }
 
 .replies {
-	padding: 10px;
+	padding: 0.6rem;
 	background-color: #E5F2F7;
 	display: none;
 }
 
 .replies .compose {
 	border-bottom: 1px solid #C4D8E6;
-	padding-bottom: 10px;
+	padding-bottom: 0.6rem;
 }
 
 .thread.expand .replies {
